@@ -33,6 +33,101 @@ return [
         'searchFields' => 'uid, uuid, proposal, status, email, type, request_log',
     ],
     'columns' => [
+        'l10n_parent' => [
+            'displayCond' => 'FIELD:sys_language_uid:>:0',
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
+            'config' => [
+                'type' => 'group',
+                'internal_type' => 'db',
+                'allowed' => 'tx_news_domain_model_news',
+                'size' => 1,
+                'maxitems' => 1,
+                'minitems' => 0,
+                'default' => 0,
+            ],
+        ],
+        'l10n_source' => [
+            'config' => [
+                'type' => 'passthrough'
+            ]
+        ],
+        'l10n_diffsource' => [
+            'config' => [
+                'type' => 'passthrough',
+                'default' => ''
+            ]
+        ],
+        'hidden' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'checkboxToggle',
+                'default' => 0,
+                'items' => [
+                    [
+                        0 => '',
+                        1 => '',
+                    ]
+                ],
+            ]
+        ],
+        'cruser_id' => [
+            'label' => 'cruser_id',
+            'config' => [
+                'type' => 'passthrough'
+            ]
+        ],
+        'pid' => [
+            'label' => 'pid',
+            'config' => [
+                'type' => 'passthrough'
+            ]
+        ],
+        'crdate' => [
+            'label' => 'crdate',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'eval' => 'datetime',
+            ]
+        ],
+        'tstamp' => [
+            'label' => 'tstamp',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'eval' => 'datetime',
+            ]
+        ],
+        'starttime' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:starttime_formlabel',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'size' => 16,
+                'eval' => 'datetime,int',
+                'default' => 0,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+            ]
+        ],
+        'endtime' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:endtime_formlabel',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'size' => 16,
+                'eval' => 'datetime,int',
+                'default' => 0,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+            ]
+        ],
         'uuid' => [
             'exclude' => false,
             'label' => $ll . 'tx_cpsitproposal_domain_model_proposal.uuid',
@@ -42,16 +137,19 @@ return [
                 'size' => 30,
                 'max' => 100,
                 'eval' => 'trim',
+                'readOnly' => true,
             ]
         ],
         'email' => [
             'exclude' => false,
-            'label' => $ll . 'tx_cpsitproposal_domain_model_proposal.email.description',
+            'label' => $ll . 'tx_cpsitproposal_domain_model_proposal.email',
+            'description' => $ll . 'tx_cpsitproposal_domain_model_proposal.email.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
                 'max' => 100,
                 'eval' => 'trim',
+                'readOnly' => true,
             ]
         ],
         'proposal' => [
@@ -62,6 +160,7 @@ return [
                 'type' => 'text',
                 'cols' => 30,
                 'rows' => 5,
+                'readOnly' => true,
             ],
         ],
 
@@ -73,6 +172,7 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'default' => '0',
+                'readOnly' => true,
                 'items' => [
                     [
                         $ll . 'tx_cpsitproposal_domain_model_proposal.status.0',
@@ -105,6 +205,58 @@ return [
                 ],
             ],
         ],
+        'record' => [
+            'exclude' => false,
+            'label' => $ll . 'tx_cpsitproposal_domain_model_proposal.record',
+            'config' => [
+                'type' => 'group',
+                'allowed' => '',
+                'prepend_tname' => true,
+                'maxitems' => 1,
+                'minitems' => 1,
+                'hideSuggest' => true,
+                'hideMoveIcons' => true,
+                'readOnly' => true,
+                'fieldControl' => [
+                    'elementBrowser' => [
+                        'disabled' => true,
+                    ],
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
+                    'addRecord' => [
+                        'disabled' => true,
+                    ],
+                    'listModule' => [
+                        'disabled' => true,
+                    ],
+                ],
+            ],
+            'default' => 0
+        ],
+        'identifier' => [
+            'exclude' => false,
+            'label' => $ll . 'tx_cpsitproposal_domain_model_proposal.identifier',
+            'description' => $ll . 'tx_cpsitproposal_domain_model_proposal.identifier.description',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'max' => 255,
+                'eval' => 'trim',
+                'readOnly' => true,
+            ]
+        ],
+        'request_log' => [
+            'exclude' => false,
+            'label' => $ll . 'tx_cpsitproposal_domain_model_proposal.request_log',
+            'description' => $ll . 'tx_cpsitproposal_domain_model_proposal.request_log.description',
+            'config' => [
+                'type' => 'text',
+                'cols' => 30,
+                'rows' => 5,
+                'readOnly' => true,
+            ],
+        ],
         'notes' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.description',
@@ -117,13 +269,13 @@ return [
     ],
     'types' => [
         '0' => [
-            'showitem' => 'uid, uuid, proposal, status, email, type, request_log,
+            'showitem' => 'uid, uuid, proposal, status, email, identifier, request_log,
             --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
             --palette--;;language,
             --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
             --palette--;;hidden,
             --palette--;;access,
-            --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,
+            --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,notes,
             --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.extended,'
         ],
     ],

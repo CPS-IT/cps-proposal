@@ -8,6 +8,6 @@ CREATE TABLE tx_cpsitproposal_domain_model_proposal
 	proposal    text             DEFAULT NULL,
 	status      int(4) unsigned  DEFAULT 0,
 	record      varchar(255)     DEFAULT '' NOT NULL,
-	type        varchar(255)     DEFAULT '' NOT NULL,
+	identifier        varchar(255)     DEFAULT '' NOT NULL,
 	request_log text             DEFAULT NULL
 );
