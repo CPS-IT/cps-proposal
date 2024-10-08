@@ -46,7 +46,10 @@ class Get extends AbstractApi
 
         if (!$uuid) {
             // Return an `invalid parameters` (422) Response
-            return $this->response->invalid();
+            return $this->response->invalid(
+                'Invalid parameters.',
+                '1728420636'
+            );
         }
 
         $proposal = $this->db->findOneByValues(
@@ -60,10 +63,18 @@ class Get extends AbstractApi
             // Return a `not found` (404) Response
             return $this->response->notFound(
                 'Proposal record not found',
+                '1728420655'
             );
         }
 
-        // Return an `found, OK` (200) Response
-        return $this->response->success($proposal);
+        return $this->response
+            ->setMessage('success')
+            ->setStatus(200)
+            ->setBody([
+                'code' => $this->response->getStatus(),
+                'message' => $this->response->getMessage(),
+                'data' => $proposal,
+            ])
+            ->render();
     }
 }
