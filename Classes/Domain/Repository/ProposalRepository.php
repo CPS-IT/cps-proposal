@@ -1,0 +1,112 @@
+<?php
+
+declare(strict_types=1);
+
+/*
+ * This file is part of the cpsit_proposal project.
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ */
+
+namespace Cpsit\CpsitProposal\Domain\Repository;
+
+use Cpsit\CpsitProposal\Domain\Model\Dto\ProposalDemand;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Generic\Qom\ConstraintInterface;
+use TYPO3\CMS\Extbase\Persistence\Generic\QuerySettingsInterface;
+use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
+use TYPO3\CMS\Extbase\Persistence\Repository;
+
+class ProposalRepository extends Repository
+{
+    public function initializeObject(): void
+    {
+        /** @var QuerySettingsInterface $querySettings */
+        $querySettings = GeneralUtility::makeInstance(Typo3QuerySettings::class);
+        // Show comments from all pages
+        $querySettings->setRespectStoragePage(false);
+        $this->setDefaultQuerySettings($querySettings);
+    }
+
+    public function findDemanded(ProposalDemand $demand): QueryResultInterface
+    {
+        $query = $this->createQuery();
+        $constraints = [];
+
+        if (!empty($demand->getPageIds())) {
+            $querySettings = $query->getQuerySettings();
+            $querySettings->setRespectStoragePage(true)
+                ->setStoragePageIds($demand->getPageIds());
+            $query->setQuerySettings($querySettings);
+        }
+
+        if (!empty($demand->getLimit())) {
+            $query->setLimit($demand->getLimit());
+        }
+
+        if (!empty($demand->getOrder())) {
+            $orderings = $this->buildOrderingFromString($demand->getOrder());
+            $query->setOrderings($orderings);
+        }
+
+        if (!empty($demand->getIdList())) {
+            $constraints[] = $query->in('uid', $demand->getIdList());
+        }
+
+        if (!empty($demand->getId())) {
+            $constraints[] = $query->equals('uid', $demand->getId());
+        }
+
+        if (!empty($constraints)) {
+            $query->matching(
+                $query->logicalAnd($constraints)
+            );
+        }
+
+        return $query->execute();
+    }
+
+    protected function buildOrderingFromString(string $ordering = ''): array
+    {
+        $orderings = [];
+        $orderList = GeneralUtility::trimExplode(',', $ordering, true);
+        foreach ($orderList as $orderItem) {
+            [$orderField, $ascDesc] = GeneralUtility::trimExplode(
+                ' ', $orderItem, true);
+            // count == 1 means that no direction is given
+            if ($ascDesc) {
+                $orderings[$orderField] = ((strtolower($ascDesc) === 'desc') ?
+                    QueryInterface::ORDER_DESCENDING :
+                    QueryInterface::ORDER_ASCENDING);
+            } else {
+                $orderings[$orderField] = QueryInterface::ORDER_ASCENDING;
+            }
+        }
+        return $orderings;
+    }
+
+    protected function buildPropertyContainsConstraint(
+        QueryInterface $query,
+        string $fieldName,
+        array $fieldValues,
+        bool $logicalOr = true
+    ): ?ConstraintInterface {
+        $propertyConstraints = null;
+        foreach ($fieldValues as $value) {
+            $propertyConstraints[] = $query->contains($fieldName, $value);
+        }
+        if (!empty($propertyConstraints)) {
+            if ($logicalOr) {
+                $propertyConstraints = $query->logicalOr($propertyConstraints);
+            }
+            if (!$logicalOr) {
+                $propertyConstraints = $query->logicalAnd($propertyConstraints);
+            }
+        }
+        return $propertyConstraints;
+    }
+}

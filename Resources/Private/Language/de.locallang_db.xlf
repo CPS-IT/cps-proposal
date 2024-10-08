@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2014-06-02T11:48:25Z"
+		  product-name="cpsit_proposal">
+		<header/>
+		<body>
+			<!-- Proposal -->
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal">
+				<source>Proposal</source>
+				<target>Antrag</target>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.uuid">
+				<source>UUID</source>
+				<target>UUID</target>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.proposal">
+				<source>Proposal</source>
+				<target>Antrag</target>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.status">
+				<source>Status</source>
+				<target>Status</target>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.status.0">
+				<source>Undefined</source>
+				<target>undefiniert</target>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.status.1">
+				<source>New</source>
+				<target>Neue</target>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.status.2">
+				<source>Edited</source>
+				<target>Bearbeitet</target>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.status.3">
+				<source>Approved</source>
+				<target>Genehmigt</target>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.status.4">
+				<source>Rejected</source>
+				<target>Abgelehnt</target>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.status.5">
+				<source>Withdraw</source>
+				<target>zurückgezogen</target>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.status.6">
+				<source>Error</source>
+				<target>Error</target>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.email">
+				<source>Email</source>
+				<target>E-Mail</target>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.record">
+				<source>Record</source>
+				<target>Datensatz</target>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.type">
+				<source>Type</source>
+				<target>Typ</target>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.request_log">
+				<source>Request Log</source>
+				<target>Request Log</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

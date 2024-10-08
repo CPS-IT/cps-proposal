@@ -1,0 +1,21 @@
+plugin.tx_cpsitproposal_app {
+  view {
+    templateRootPaths {
+      0 = EXT:cpsit_proposal/Resources/Private/Templates
+      10 = {$plugin.tx_cpsitproposal_app.view.templateRootPath}
+    }
+
+    layoutRootPaths {
+      0 = EXT:cpsit_proposal/Resources/Private/Layouts
+      10 = {$plugin.tx_cpsitproposal_app.view.layoutRootPath}
+    }
+
+    partialRootPaths {
+      0 = EXT:cpsit_proposal/Resources/Private/Partials
+      10 = {$plugin.tx_cpsitproposal_app.view.partialRootPath}
+    }
+  }
+
+  settings {
+  }
+}

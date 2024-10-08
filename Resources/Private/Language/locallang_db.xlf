@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-06-02T11:48:25Z"
+		  product-name="cpsit_proposal">
+		<header/>
+		<body>
+			<!-- Proposal -->
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal">
+				<source>Proposal</source>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.uuid">
+				<source>UUID</source>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.proposal">
+				<source>Proposal</source>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.status">
+				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.record">
+				<source>Record</source>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.request_log">
+				<source>Request Log</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

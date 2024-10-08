@@ -1,0 +1,22 @@
+{
+    "name": "cpsit/cpsit-proposal",
+    "description": "Api to send and edit records proposal.",
+    "type": "typo3-cms-extension",
+    "license": [
+        "GPL-2.0-or-later"
+    ],
+    "require": {
+        "typo3/cms-core": "^11.5 || ^12.4",
+		"nng/nnrestapi": "^1.4 || ^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cpsit\\CpsitProposal\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "cpsit_proposal"
+        }
+    }
+}
