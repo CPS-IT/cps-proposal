@@ -49,12 +49,7 @@ class Post extends AbstractApi
             return $this->response->invalid();
         }
 
-        $proposal = $this->db->findOneByValues(
-            Proposal::TABLE_NAME,
-            [
-                Proposal::FIELD_UUID => $uuid,
-            ]
-        );
+
 
         if (empty($proposal)) {
             // Return a `not found` (404) Response
