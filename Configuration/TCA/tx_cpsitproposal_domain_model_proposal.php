@@ -212,6 +212,7 @@ return [
                 'type' => 'group',
                 'allowed' => '',
                 'prepend_tname' => true,
+                'size' => 1,
                 'maxitems' => 1,
                 'minitems' => 1,
                 'hideSuggest' => true,
@@ -269,7 +270,7 @@ return [
     ],
     'types' => [
         '0' => [
-            'showitem' => 'uid, uuid, proposal, status, email, identifier, request_log,
+            'showitem' => 'uid, uuid, proposal, record, status, email, identifier, request_log,
             --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
             --palette--;;language,
             --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
