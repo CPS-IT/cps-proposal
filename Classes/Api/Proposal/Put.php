@@ -26,20 +26,19 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * Update a proposal
  *
- * @Api\Endpoint()
+ * @Api\Endpoint
  */
 class Put extends AbstractApi
 {
-    const UUID_ARGUMENT = 'id';
-    const REQUIRED_ARGUMENTS = ['email', 'identifier', 'pid'];
+    public const UUID_ARGUMENT = 'id';
+    public const REQUIRED_ARGUMENTS = ['email', 'identifier', 'pid'];
 
     public function __construct(
         private readonly ProposalRepository $proposalRepository,
         private readonly Db $db,
         private readonly ProposalFromRequestPayload $proposalFromRequestPayload,
         private readonly EventDispatcherInterface $eventDispatcher
-    ) {
-    }
+    ) {}
 
     /**
      * Call via PUT-request with payload https://www.mywebsite.com/api/proposal/1
@@ -86,12 +85,11 @@ class Put extends AbstractApi
      *
      * @Api\Route("PUT /proposal/{id}")
      * @Api\Access("public")
-     * @Api\Localize()
+     * @Api\Localize
      * @return Response
      */
     public function putIndexAction(): Response
     {
-
         if (!$this->isRequestValid()) {
             // Return an `invalid parameters` (422) Response
             return $this->response->invalid(
@@ -101,7 +99,6 @@ class Put extends AbstractApi
         }
 
         $uuid = $this->request->getArguments()[static::UUID_ARGUMENT];
-
 
         $proposal = $this->proposalRepository->findOneByUuid($uuid);
 
@@ -138,7 +135,6 @@ class Put extends AbstractApi
             ->render();
     }
 
-
     protected function isRequestValid(): bool
     {
         $uuid = $this->request->getArguments()[static::UUID_ARGUMENT] ?? null;
@@ -161,5 +157,4 @@ class Put extends AbstractApi
         }
         return true;
     }
-
 }

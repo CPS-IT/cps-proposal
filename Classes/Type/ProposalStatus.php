@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /*
@@ -13,7 +14,6 @@ namespace Cpsit\CpsitProposal\Type;
 
 enum ProposalStatus: int
 {
-
     case Undefined = 0;
     case New = 1;
     case Edited = 2;

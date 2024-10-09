@@ -21,16 +21,15 @@ use TYPO3\CMS\Core\Http\Response;
 /**
  * Get proposal record
  *
- * @Api\Endpoint()
+ * @Api\Endpoint
  */
 class Get extends AbstractApi
 {
-    const UUID_ARGUMENT = 'id';
+    public const UUID_ARGUMENT = 'id';
 
     public function __construct(
         protected readonly Db $db
-    ) {
-    }
+    ) {}
 
     /**
      * Call via GET-request with an uuid:
@@ -41,7 +40,7 @@ class Get extends AbstractApi
      *
      * @Api\Route("GET /proposal/{id}")
      * @Api\Access("public")
-     * @Api\Localize()
+     * @Api\Localize
      * @return Response
      */
     public function getIndexAction(): Response

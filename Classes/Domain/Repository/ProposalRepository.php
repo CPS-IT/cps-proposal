@@ -99,7 +99,10 @@ class ProposalRepository extends Repository
         $orderList = GeneralUtility::trimExplode(',', $ordering, true);
         foreach ($orderList as $orderItem) {
             [$orderField, $ascDesc] = GeneralUtility::trimExplode(
-                ' ', $orderItem, true);
+                ' ',
+                $orderItem,
+                true
+            );
             // count == 1 means that no direction is given
             if ($ascDesc) {
                 $orderings[$orderField] = ((strtolower($ascDesc) === 'desc') ?

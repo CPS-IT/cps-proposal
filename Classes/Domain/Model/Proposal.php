@@ -96,6 +96,4 @@ class Proposal extends AbstractEntity
     {
         $this->requestLog = $requestLog;
     }
-
-
 }

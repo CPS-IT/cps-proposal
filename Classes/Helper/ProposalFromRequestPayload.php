@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace Cpsit\CpsitProposal\Helper;
 
-
 use Cpsit\CpsitProposal\Domain\Model\Proposal;
 use Cpsit\CpsitProposal\Type\ProposalStatus;
 use Nng\Nnrestapi\Mvc\Request;
@@ -20,11 +19,9 @@ use Symfony\Component\Uid\Uuid;
 
 final class ProposalFromRequestPayload
 {
-
     public function __construct(
         protected RequestDataProvider $requestDataProvider
-    ) {
-    }
+    ) {}
 
     public function create(Request $request): Proposal
     {

@@ -25,18 +25,17 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * Post proposal
  *
- * @Api\Endpoint()
+ * @Api\Endpoint
  */
 class Post extends AbstractApi
 {
-    const REQUIRED_ARGUMENTS = ['validationHash', 'email', 'identifier', 'pid'];
+    public const REQUIRED_ARGUMENTS = ['validationHash', 'email', 'identifier', 'pid'];
 
     public function __construct(
         private readonly Db $db,
         private readonly ProposalFromRequestPayload $proposalFromRequestPayload,
         private readonly EventDispatcherInterface $eventDispatcher
-    ) {
-    }
+    ) {}
 
     /**
      * Call via POST-request with payload https://www.mywebsite.com/api/proposal/
@@ -81,12 +80,11 @@ class Post extends AbstractApi
      *
      * @Api\Route("POST /proposal")
      * @Api\Access("public")
-     * @Api\Localize()
+     * @Api\Localize
      * @return Response
      */
     public function postIndexAction(): Response
     {
-
         if (!$this->isRequestValid()) {
             // Return an `invalid parameters` (422) Response
             return $this->response->invalid(
@@ -128,7 +126,6 @@ class Post extends AbstractApi
             ->render();
     }
 
-
     protected function isRequestValid(): bool
     {
         $payload = $this->request->getBody();
@@ -145,5 +142,4 @@ class Post extends AbstractApi
         }
         return true;
     }
-
 }

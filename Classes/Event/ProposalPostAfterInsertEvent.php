@@ -13,8 +13,8 @@ declare(strict_types=1);
 namespace Cpsit\CpsitProposal\Event;
 
 use Cpsit\CpsitProposal\Domain\Model\Proposal;
-use Nng\Nnrestapi\Mvc\Response;
 use Nng\Nnrestapi\Mvc\Request;
+use Nng\Nnrestapi\Mvc\Response;
 
 /**
  * Event for proposal after post request
@@ -28,8 +28,7 @@ class ProposalPostAfterInsertEvent
         private Proposal $proposal,
         private Response $response,
         private readonly Request $request
-    ) {
-    }
+    ) {}
 
     public function getProposal(): Proposal
     {

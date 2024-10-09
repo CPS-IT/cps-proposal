@@ -48,14 +48,14 @@ return [
         ],
         'l10n_source' => [
             'config' => [
-                'type' => 'passthrough'
-            ]
+                'type' => 'passthrough',
+            ],
         ],
         'l10n_diffsource' => [
             'config' => [
                 'type' => 'passthrough',
-                'default' => ''
-            ]
+                'default' => '',
+            ],
         ],
         'hidden' => [
             'exclude' => true,
@@ -68,21 +68,21 @@ return [
                     [
                         0 => '',
                         1 => '',
-                    ]
+                    ],
                 ],
-            ]
+            ],
         ],
         'cruser_id' => [
             'label' => 'cruser_id',
             'config' => [
-                'type' => 'passthrough'
-            ]
+                'type' => 'passthrough',
+            ],
         ],
         'pid' => [
             'label' => 'pid',
             'config' => [
-                'type' => 'passthrough'
-            ]
+                'type' => 'passthrough',
+            ],
         ],
         'crdate' => [
             'label' => 'crdate',
@@ -90,7 +90,7 @@ return [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
                 'eval' => 'datetime',
-            ]
+            ],
         ],
         'tstamp' => [
             'label' => 'tstamp',
@@ -98,7 +98,7 @@ return [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
                 'eval' => 'datetime',
-            ]
+            ],
         ],
         'starttime' => [
             'exclude' => true,
@@ -112,7 +112,7 @@ return [
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
                 ],
-            ]
+            ],
         ],
         'endtime' => [
             'exclude' => true,
@@ -126,7 +126,7 @@ return [
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
                 ],
-            ]
+            ],
         ],
         'uuid' => [
             'exclude' => false,
@@ -138,7 +138,7 @@ return [
                 'max' => 100,
                 'eval' => 'trim',
                 'readOnly' => true,
-            ]
+            ],
         ],
         'email' => [
             'exclude' => false,
@@ -150,7 +150,7 @@ return [
                 'max' => 100,
                 'eval' => 'trim',
                 'readOnly' => true,
-            ]
+            ],
         ],
         'proposal' => [
             'exclude' => false,
@@ -201,7 +201,7 @@ return [
                     [
                         $ll . 'tx_cpsitproposal_domain_model_proposal.status.6',
                         6,
-                    ]
+                    ],
                 ],
             ],
         ],
@@ -233,7 +233,7 @@ return [
                     ],
                 ],
             ],
-            'default' => 0
+            'default' => 0,
         ],
         'identifier' => [
             'exclude' => false,
@@ -245,7 +245,7 @@ return [
                 'max' => 255,
                 'eval' => 'trim',
                 'readOnly' => true,
-            ]
+            ],
         ],
         'request_log' => [
             'exclude' => false,
@@ -277,7 +277,7 @@ return [
             --palette--;;hidden,
             --palette--;;access,
             --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,notes,
-            --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.extended,'
+            --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.extended,',
         ],
     ],
     'palettes' => [
@@ -299,7 +299,5 @@ return [
                 --linebreak--,editlock
             ',
         ],
-    ]
+    ],
 ];
-
-
