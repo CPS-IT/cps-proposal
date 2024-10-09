@@ -19,8 +19,9 @@ class RequestDataProvider
     public function get(Request $request): array
     {
         return [
+            'time' => date('Y-m-d H:i:s'),
+            'uri' => $request->getMvcRequest()->getUri()->__toString(),
             'endpoint' => $request->getEndpoint(),
-            'uri' => $request->getMvcRequest()->getUri(),
             'body' => $request->getBody(),
         ];
     }

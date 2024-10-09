@@ -13,11 +13,12 @@ declare(strict_types=1);
 namespace Cpsit\CpsitProposal\Api\Proposal;
 
 use Cpsit\CpsitProposal\Domain\Model\Proposal;
+use Cpsit\CpsitProposal\Event\ProposalPostAfterInsertEvent;
 use Cpsit\CpsitProposal\Helper\CreateProposalFromPostRequest;
-use Doctrine\Common\Annotations\Annotation\Required;
 use Nng\Nnhelpers\Utilities\Db;
 use Nng\Nnrestapi\Annotations as Api;
 use Nng\Nnrestapi\Api\AbstractApi;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Http\Response;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -31,8 +32,9 @@ class Post extends AbstractApi
     const REQUIRED_ARGUMENTS = ['validationHash', 'email', 'identifier', 'pid'];
 
     public function __construct(
-        protected readonly Db $db,
-        protected CreateProposalFromPostRequest $createProposalRequest,
+        private readonly Db $db,
+        private CreateProposalFromPostRequest $createProposalRequest,
+        private readonly EventDispatcherInterface $eventDispatcher
     ) {
     }
 
@@ -93,7 +95,7 @@ class Post extends AbstractApi
         }
 
         $proposal = $this->createProposalRequest->create($this->request);
-        $proposal = \nn\t3::Db()->insert($proposal);
+        $proposal = $this->db->insert($proposal);
 
         if (!$proposal instanceof Proposal) {
             // Return a `not found` (404) Response
@@ -104,14 +106,24 @@ class Post extends AbstractApi
             );
         }
 
-        return $this->response
+        $this->response
             ->setMessage('success')
-            ->setStatus(201)
-            ->setBody([
-                'code' => $this->response->getStatus(),
-                'message' => $this->response->getMessage(),
-                'data' => $proposal,
-            ])
+            ->setStatus(201);
+
+        /** @var ProposalPostAfterInsertEvent $event */
+        $event = $this->eventDispatcher->dispatch(
+            new ProposalPostAfterInsertEvent(
+                $proposal,
+                $this->response,
+                $this->request
+            )
+        );
+
+        return $this->response->setBody([
+            'code' => $this->response->getStatus(),
+            'message' => $this->response->getMessage(),
+            'data' => $proposal,
+        ])
             ->render();
     }
 

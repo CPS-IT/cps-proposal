@@ -33,7 +33,11 @@ class Get extends AbstractApi
     }
 
     /**
-     * Call via GET-request with an uuid: https://www.mywebsite.com/api/proposal/1
+     * Call via GET-request with an uuid:
+     *
+     * Example:
+     *
+     * `https://www.mywebsite.com/api/proposal/01926e15-1adc-71b5-98be-3f585ded5410`
      *
      * @Api\Route("GET /proposal/{id}")
      * @Api\Access("public")
