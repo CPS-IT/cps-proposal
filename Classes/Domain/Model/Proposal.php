@@ -26,6 +26,7 @@ class Proposal extends AbstractEntity
     protected string $record = '';
     protected string $identifier = '';
     protected string $requestLog = '';
+    protected bool $hidden = false;
 
     public function getUuid(): string
     {
@@ -95,5 +96,20 @@ class Proposal extends AbstractEntity
     public function setRequestLog(string $requestLog): void
     {
         $this->requestLog = $requestLog;
+    }
+
+    public function getHidden(): bool
+    {
+        return $this->hidden;
+    }
+
+    public function isHidden(): bool
+    {
+        return $this->hidden;
+    }
+
+    public function setHidden(bool $hidden): void
+    {
+        $this->hidden = $hidden;
     }
 }

@@ -56,6 +56,18 @@ final class ProposalFromRequestPayload
         $proposal->setRequestLog($requestLog);
     }
 
+    public function withdraw(Proposal $proposal, Request $request): void
+    {
+        $proposal->setStatus(ProposalStatus::Withdraw->value);
+
+        // Prepend request log
+        $requestLog = $this->updateProposalRequestLog(
+            $request,
+            (string)$proposal->getRequestLog()
+        );
+        $proposal->setRequestLog($requestLog);
+    }
+
     protected function updateProposalRequestLog(Request $request, string $log = ''): string
     {
         $log = json_decode($log, true);

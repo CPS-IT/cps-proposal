@@ -41,13 +41,15 @@ class Put extends AbstractApi
     ) {}
 
     /**
-     * Call via PUT-request with payload https://www.mywebsite.com/api/proposal/1
-     * Required params: validationHash, email, identifier, pid
+     * Call via PUT-request with an uuid:
+     *
+     * Required payload params: validationHash, email, identifier, pid
+     *
      * Example:
      *
      * `https://www.mywebsite.com/api/proposal/01926e15-1adc-71b5-98be-3f585ded5410`
      *
-     * ### Proposal:
+     * ### Payload:
      *
      * ```
      * {
@@ -65,7 +67,7 @@ class Put extends AbstractApi
      * }
      * ```
      *
-     * ### Success:
+     * ### Response:
      *
      * {
      * "code": 202,
