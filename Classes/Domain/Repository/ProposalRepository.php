@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Cpsit\CpsitProposal\Domain\Repository;
 
 use Cpsit\CpsitProposal\Domain\Model\Dto\ProposalDemand;
+use Cpsit\CpsitProposal\Domain\Model\Proposal;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Qom\ConstraintInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\QuerySettingsInterface;
@@ -30,6 +31,28 @@ class ProposalRepository extends Repository
         // Show comments from all pages
         $querySettings->setRespectStoragePage(false);
         $this->setDefaultQuerySettings($querySettings);
+    }
+
+    public function findOneByUuid(string $uuid): ?object
+    {
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
+        $query->getQuerySettings()->setRespectSysLanguage(false);
+        $query->getQuerySettings()->setLanguageOverlayMode(true);
+
+        $result = $query->matching(
+            $query->equals(Proposal::FIELD_UUID, $uuid)
+        )
+            ->setLimit(1)
+            ->execute();
+
+        if ($result instanceof QueryResultInterface) {
+            return $result->getFirst();
+        }
+        if (is_array($result)) {
+            return $result[0] ?? null;
+        }
+        return null;
     }
 
     public function findDemanded(ProposalDemand $demand): QueryResultInterface

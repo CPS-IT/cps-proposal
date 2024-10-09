@@ -25,7 +25,7 @@ class Proposal extends AbstractEntity
     protected int $status = 0;
     protected string $record = '';
     protected string $identifier = '';
-    protected string $request_log = '';
+    protected string $requestLog = '';
 
     public function getUuid(): string
     {
@@ -89,12 +89,12 @@ class Proposal extends AbstractEntity
 
     public function getRequestLog(): string
     {
-        return $this->request_log;
+        return $this->requestLog;
     }
 
-    public function setRequestLog(string $request_log): void
+    public function setRequestLog(string $requestLog): void
     {
-        $this->request_log = $request_log;
+        $this->requestLog = $requestLog;
     }
 
 

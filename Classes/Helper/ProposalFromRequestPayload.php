@@ -18,7 +18,7 @@ use Cpsit\CpsitProposal\Type\ProposalStatus;
 use Nng\Nnrestapi\Mvc\Request;
 use Symfony\Component\Uid\Uuid;
 
-final class CreateProposalFromPostRequest
+final class ProposalFromRequestPayload
 {
 
     public function __construct(
@@ -41,5 +41,31 @@ final class CreateProposalFromPostRequest
         );
 
         return $proposal;
+    }
+
+    public function update(Proposal $proposal, Request $request): void
+    {
+        $proposal->setEmail($request->getBody()['email']);
+        $proposal->setProposal($request->getRawBody());
+        $proposal->setStatus(ProposalStatus::Edited->value);
+        $proposal->setIdentifier($request->getBody()['identifier'] ?? 0);
+        $proposal->setPid((int)$request->getBody()['pid'] ?? 0);
+
+        // Prepend request log
+        $requestLog = $this->updateProposalRequestLog(
+            $request,
+            (string)$proposal->getRequestLog()
+        );
+        $proposal->setRequestLog($requestLog);
+    }
+
+    protected function updateProposalRequestLog(Request $request, string $log = ''): string
+    {
+        $log = json_decode($log, true);
+        if (!is_array($log)) {
+            return json_encode($this->requestDataProvider->get($request));
+        }
+
+        return json_encode([$this->requestDataProvider->get($request), ...$log]);
     }
 }

@@ -13,7 +13,8 @@ declare(strict_types=1);
 namespace Cpsit\CpsitProposal\Api\Proposal;
 
 use Cpsit\CpsitProposal\Domain\Model\Proposal;
-use Cpsit\CpsitProposal\Event\ProposalPostAfterInsertEvent;
+use Cpsit\CpsitProposal\Domain\Repository\ProposalRepository;
+use Cpsit\CpsitProposal\Event\ProposalPutAfterUpdateEvent;
 use Cpsit\CpsitProposal\Helper\ProposalFromRequestPayload;
 use Nng\Nnhelpers\Utilities\Db;
 use Nng\Nnrestapi\Annotations as Api;
@@ -23,15 +24,17 @@ use TYPO3\CMS\Core\Http\Response;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * Post proposal
+ * Update a proposal
  *
  * @Api\Endpoint()
  */
-class Post extends AbstractApi
+class Put extends AbstractApi
 {
-    const REQUIRED_ARGUMENTS = ['validationHash', 'email', 'identifier', 'pid'];
+    const UUID_ARGUMENT = 'id';
+    const REQUIRED_ARGUMENTS = ['email', 'identifier', 'pid'];
 
     public function __construct(
+        private readonly ProposalRepository $proposalRepository,
         private readonly Db $db,
         private readonly ProposalFromRequestPayload $proposalFromRequestPayload,
         private readonly EventDispatcherInterface $eventDispatcher
@@ -39,9 +42,11 @@ class Post extends AbstractApi
     }
 
     /**
-     * Call via POST-request with payload https://www.mywebsite.com/api/proposal/
+     * Call via PUT-request with payload https://www.mywebsite.com/api/proposal/1
+     * Required params: validationHash, email, identifier, pid
+     * Example:
      *
-     * Required payload: email, identifier, pid
+     * `https://www.mywebsite.com/api/proposal/01926e15-1adc-71b5-98be-3f585ded5410`
      *
      * ### Proposal:
      *
@@ -49,7 +54,7 @@ class Post extends AbstractApi
      * {
      * "validationHash": "8743b52063cd84097a65d1633f5c74f5",
      * "email": "nix@foo.org",
-     * "identifier": "any-string",
+     * "identifier": "any-string-updated",
      * "pid": 1053,
      * "title": "A event proposal with title",
      * "teaser": "Teaser text for event proposal. The teaser must not  contain any html tags\n",
@@ -64,7 +69,7 @@ class Post extends AbstractApi
      * ### Success:
      *
      * {
-     * "code": 201,
+     * "code": 202,
      * "message": "success",
      * "data": {
      *   "email": "nix@foo.org",
@@ -79,41 +84,46 @@ class Post extends AbstractApi
      * }
      * }
      *
-     * @Api\Route("POST /proposal")
+     * @Api\Route("PUT /proposal/{id}")
      * @Api\Access("public")
      * @Api\Localize()
      * @return Response
      */
-    public function postIndexAction(): Response
+    public function putIndexAction(): Response
     {
 
         if (!$this->isRequestValid()) {
             // Return an `invalid parameters` (422) Response
             return $this->response->invalid(
-                'Invalid parameters.',
-                '1728420578'
+                'Invalid proposal PUT request.',
+                '1728475423'
             );
         }
 
-        $proposal = $this->proposalFromRequestPayload->create($this->request);
-        $proposal = $this->db->insert($proposal);
+        $uuid = $this->request->getArguments()[static::UUID_ARGUMENT];
+
+
+        $proposal = $this->proposalRepository->findOneByUuid($uuid);
 
         if (!$proposal instanceof Proposal) {
             // Return a `not found` (404) Response
             return $this->response->error(
                 400,
-                'Proposal record could not be created',
-                '1728420825'
+                'Proposal record could not be found for uuid ' . $uuid,
+                '1728475428'
             );
         }
 
+        $this->proposalFromRequestPayload->update($proposal, $this->request);
+        $this->db->update($proposal);
+
         $this->response
             ->setMessage('success')
-            ->setStatus(201);
+            ->setStatus(202);
 
-        // Event dispatch after insert
+        // Event dispatch after update
         $this->eventDispatcher->dispatch(
-            new ProposalPostAfterInsertEvent(
+            new ProposalPutAfterUpdateEvent(
                 $proposal,
                 $this->response,
                 $this->request
@@ -131,6 +141,12 @@ class Post extends AbstractApi
 
     protected function isRequestValid(): bool
     {
+        $uuid = $this->request->getArguments()[static::UUID_ARGUMENT] ?? null;
+
+        if (!$uuid) {
+            return false;
+        }
+
         $payload = $this->request->getBody();
 
         foreach (self::REQUIRED_ARGUMENTS as $argument) {

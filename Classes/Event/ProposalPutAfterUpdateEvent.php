@@ -17,12 +17,12 @@ use Nng\Nnrestapi\Mvc\Response;
 use Nng\Nnrestapi\Mvc\Request;
 
 /**
- * Event for proposal after post request
+ * Event for proposal after put request
  *
  * Add Extra logic like sending e-mail
  * Modify response
  */
-class ProposalPostAfterInsertEvent
+class ProposalPutAfterUpdateEvent
 {
     public function __construct(
         private Proposal $proposal,

@@ -51,7 +51,7 @@ class Get extends AbstractApi
         if (!$uuid) {
             // Return an `invalid parameters` (422) Response
             return $this->response->invalid(
-                'Invalid parameters.',
+                'Invalid parameters for proposal GET.',
                 '1728420636'
             );
         }
