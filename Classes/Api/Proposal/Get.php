@@ -28,8 +28,7 @@ class Get extends AbstractApi
 
     public function __construct(
         private readonly ProposalRepository $proposalRepository
-    ) {
-    }
+    ) {}
 
     /**
      * Call via GET-request with an uuid:

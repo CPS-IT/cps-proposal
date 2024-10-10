@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace Cpsit\CpsitProposal\Event;
 
-use Cpsit\CpsitProposal\Domain\Model\Proposal;
 use Nng\Nnrestapi\Mvc\Request;
 use Nng\Nnrestapi\Mvc\Response;
 

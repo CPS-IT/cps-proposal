@@ -21,8 +21,7 @@ final class ProposalFromRequestPayload
 {
     public function __construct(
         protected RequestDataProvider $requestDataProvider
-    ) {
-    }
+    ) {}
 
     public function create(Request $request): Proposal
     {
@@ -76,7 +75,7 @@ final class ProposalFromRequestPayload
         $log = json_decode($log, true);
         if (!is_array($log)) {
             $log = [
-                0 => $this->requestDataProvider->get($request)
+                0 => $this->requestDataProvider->get($request),
             ];
             return json_encode($log);
         }
