@@ -30,8 +30,7 @@ class Email extends AbstractApi
 
     public function __construct(
         private readonly EventDispatcherInterface $eventDispatcher
-    ) {
-    }
+    ) {}
 
     /**
      * Call via POST-request with payload
