@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2014-06-02T11:48:25Z"
+		  product-name="cpsit_proposal">
+		<header/>
+		<body>
+			<!-- App plugin -->
+			<trans-unit id="app.plugin.title">
+				<source>Proposal App</source>
+				<target>Antrag App</target>
+			</trans-unit>
+			<trans-unit id="app.plugin.description">
+				<source>API to post record proposals</source>
+				<target>API zum Posten von Datensatzvorschlägen</target>
+			</trans-unit>
+
+			<!-- App flexform -->
+			<trans-unit id="app.sheetTitle">
+				<source>Proposal App</source>
+				<target>Antrag App</target>
+			</trans-unit>
+			<trans-unit id="app.settings.identifier">
+				<source>Proposal identifier string</source>
+				<target>Antrag Identifikator String</target>
+			</trans-unit>
+			<trans-unit id="app.settings.identifier.description">
+				<source>Identifier string for proposal records</source>
+				<target>Bezeichnerzeichenfolge für Antragsdatensätze</target>
+			</trans-unit>
+			<trans-unit id="app.settings.storagePid">
+				<source>Page to store proposal records</source>
+				<target>Seite zum Speichern von Antragsdatensätze</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

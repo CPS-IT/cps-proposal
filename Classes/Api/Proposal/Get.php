@@ -36,7 +36,28 @@ class Get extends AbstractApi
      *
      * Example:
      *
-     * `https://www.mywebsite.com/api/proposal/01926e15-1adc-71b5-98be-3f585ded5410`
+     * https://www.mywebsite.com/api/proposal/01926e15-1adc-71b5-98be-3f585ded5410
+     *
+     * ### Response:
+     *
+     * ```
+     * {
+     *   "code": 200,
+     *   "message": "success",
+     *   "data": {
+     *     "email": "nix@foo.org",
+     *     "identifier": "any-string",
+     *     "pid": 1053,
+     *     "appPid": 1053,
+     *     "proposal": "{json:payload}",
+     *     "record": "",
+     *     "requestLog": "{json:payload}",
+     *     "status": 1,
+     *     "uid": 4,
+     *     "uuid": "01926e15-1adc-71b5-98be-3f585ded5410"
+     *   }
+     * }
+     * ```
      *
      * @Api\Route("GET /proposal/{id}")
      * @Api\Access("public")

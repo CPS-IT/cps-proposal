@@ -29,7 +29,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class Post extends AbstractApi
 {
-    public const REQUIRED_ARGUMENTS = ['validationHash', 'email', 'identifier', 'pid'];
+    public const REQUIRED_ARGUMENTS = ['email', 'identifier', 'pid', 'appPid'];
 
     public function __construct(
         private readonly Db $db,
@@ -40,20 +40,24 @@ class Post extends AbstractApi
     /**
      * Call via POST-request with payload
      *
-     * Required payload: email, identifier, pid
+     * #### Required payload params:
+     * * string `email`
+     * * string `identifier`
+     * * int `pid`,
+     * * int `appPid`
      *
      * Example:
      *
-     * `https://www.mywebsite.com/api/proposal/`
+     * https://www.mywebsite.com/api/proposal/
      *
      * ### Payload:
      *
      * ```
      * {
-     * "validationHash": "8743b52063cd84097a65d1633f5c74f5",
      * "email": "nix@foo.org",
      * "identifier": "any-string",
      * "pid": 1053,
+     * "appPid": 1053,
      * "title": "A event proposal with title",
      * "teaser": "Teaser text for event proposal. The teaser must not  contain any html tags\n",
      * "datetime": "2017-07-21T17:00:00",
@@ -66,21 +70,24 @@ class Post extends AbstractApi
      *
      * ### Response:
      *
+     * ```
      * {
-     * "code": 201,
-     * "message": "success",
-     * "data": {
-     *   "email": "nix@foo.org",
-     *   "identifier": "any-string",
-     *   "pid": 1053,
-     *   "proposal": {"json":"payload"}",
-     *   "record": "",
-     *   "requestLog": "{"json":"data"}",
-     *   "status": 1,
-     *   "uid": 4,
-     *   "uuid": "01926e15-1adc-71b5-98be-3f585ded5410"
+     *   "code": 201,
+     *   "message": "success",
+     *   "data": {
+     *     "email": "nix@foo.org",
+     *     "identifier": "any-string",
+     *     "pid": 1053,
+     *     "appPid": 1053,
+     *     "proposal": "{json:payload}",
+     *     "record": "",
+     *     "requestLog": "{json:payload}",
+     *     "status": 1,
+     *     "uid": 4,
+     *     "uuid": "01926e15-1adc-71b5-98be-3f585ded5410"
+     *   }
      * }
-     * }
+     * ```
      *
      * @Api\Route("POST /proposal")
      * @Api\Access("public")

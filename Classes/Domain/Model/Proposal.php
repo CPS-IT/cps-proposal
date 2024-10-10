@@ -22,10 +22,11 @@ class Proposal extends AbstractEntity
     protected string $uuid = '';
     protected string $email = '';
     protected string $proposal = '';
-    protected int $status = 0;
     protected string $record = '';
     protected string $identifier = '';
     protected string $requestLog = '';
+    protected int $status = 0;
+    protected int $appPid = 0;
     protected bool $hidden = false;
 
     public function getUuid(): string
@@ -56,6 +57,16 @@ class Proposal extends AbstractEntity
     public function setProposal(string $proposal): void
     {
         $this->proposal = $proposal;
+    }
+
+    public function getAppPid(): int
+    {
+        return $this->appPid;
+    }
+
+    public function setAppPid(int $appPid): void
+    {
+        $this->appPid = $appPid;
     }
 
     public function getStatus(): int

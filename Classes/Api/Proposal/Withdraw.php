@@ -43,26 +43,16 @@ class Withdraw extends AbstractApi
      *
      * Example:
      *
-     * `https://www.mywebsite.com/api/proposal/withdraw/01926e15-1adc-71b5-98be-3f585ded5410`
+     * https://www.mywebsite.com/api/proposal/withdraw/01926e15-1adc-71b5-98be-3f585ded5410
      *
      *
      * ### Response:
-     *
+     *```
      * {
-     * "code": 202,
-     * "message": "success",
-     * "data": {
-     *   "email": "nix@foo.org",
-     *   "identifier": "any-string",
-     *   "pid": 1053,
-     *   "proposal": {"json":"payload"}",
-     *   "record": "",
-     *   "requestLog": "{"json":"data"}",
-     *   "status": 1,
-     *   "uid": 4,
-     *   "uuid": "01926e15-1adc-71b5-98be-3f585ded5410"
+     *   "code": 200,
+     *   "message": "success",
      * }
-     * }
+     *```
      *
      * @Api\Route("PUT /proposal/withdraw/{id}")
      * @Api\Access("public")

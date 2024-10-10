@@ -1,0 +1,15 @@
+mod.wizards.newContentElement.wizardItems {
+  plugins {
+    elements {
+      cpsitproposal_app {
+        iconIdentifier = icon-proposal-idea
+        title = LLL:EXT:cpsit_proposal/Resources/Private/Language/locallang_be.xlf:app.plugin.title
+        description = LLL:EXT:cpsit_proposal/Resources/Private/Language/locallang_be.xlf:app.plugin.description
+        tt_content_defValues {
+          CType = list
+          list_type = cpsitproposal_app
+        }
+      }
+    }
+  }
+}

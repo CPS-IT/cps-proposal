@@ -214,7 +214,7 @@ return [
                 'prepend_tname' => true,
                 'size' => 1,
                 'maxitems' => 1,
-                'minitems' => 1,
+                'minitems' => 0,
                 'hideSuggest' => true,
                 'hideMoveIcons' => true,
                 'readOnly' => true,
@@ -258,6 +258,27 @@ return [
                 'readOnly' => true,
             ],
         ],
+        'app_pid' => [
+            'exclude' => false,
+            'label' => $ll . 'tx_cpsitproposal_domain_model_proposal.app_pid',
+            'description' => $ll . 'tx_cpsitproposal_domain_model_proposal.app_pid.description',
+            'config' => [
+                'type' => 'group',
+                'allowed' => 'pages',
+                'prepend_tname' => false,
+                'size' => 1,
+                'maxitems' => 1,
+                'minitems' => 0,
+                'hideMoveIcons' => true,
+                'readOnly' => true,
+                'fieldControl' => [
+                    'addRecord' => [
+                        'disabled' => true,
+                    ],
+                ],
+            ],
+            'default' => 0,
+        ],
         'notes' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.description',
@@ -270,7 +291,7 @@ return [
     ],
     'types' => [
         '0' => [
-            'showitem' => 'uid, uuid, proposal, record, status, email, identifier, request_log,
+            'showitem' => 'uid, uuid, proposal, record, status, email, identifier, app_pid, request_log,
             --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
             --palette--;;language,
             --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,

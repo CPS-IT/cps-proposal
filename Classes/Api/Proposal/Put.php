@@ -31,7 +31,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class Put extends AbstractApi
 {
     public const UUID_ARGUMENT = 'id';
-    public const REQUIRED_ARGUMENTS = ['email', 'identifier', 'pid'];
+    public const REQUIRED_ARGUMENTS = ['email', 'identifier', 'pid', 'appPid'];
 
     public function __construct(
         private readonly ProposalRepository $proposalRepository,
@@ -43,20 +43,24 @@ class Put extends AbstractApi
     /**
      * Call via PUT-request with an uuid:
      *
-     * Required payload params: validationHash, email, identifier, pid
+     * #### Required payload params:
+     * * string `email`
+     * * string `identifier`
+     * * int `pid`,
+     * * int `appPid`
      *
      * Example:
      *
-     * `https://www.mywebsite.com/api/proposal/01926e15-1adc-71b5-98be-3f585ded5410`
+     * https://www.mywebsite.com/api/proposal/01926e15-1adc-71b5-98be-3f585ded5410
      *
      * ### Payload:
      *
      * ```
      * {
-     * "validationHash": "8743b52063cd84097a65d1633f5c74f5",
      * "email": "nix@foo.org",
      * "identifier": "any-string-updated",
      * "pid": 1053,
+     * "appPid": 1053,
      * "title": "A event proposal with title",
      * "teaser": "Teaser text for event proposal. The teaser must not  contain any html tags\n",
      * "datetime": "2017-07-21T17:00:00",
@@ -69,21 +73,24 @@ class Put extends AbstractApi
      *
      * ### Response:
      *
+     * ```
      * {
-     * "code": 202,
-     * "message": "success",
-     * "data": {
-     *   "email": "nix@foo.org",
-     *   "identifier": "any-string",
-     *   "pid": 1053,
-     *   "proposal": {"json":"payload"}",
-     *   "record": "",
-     *   "requestLog": "{"json":"data"}",
-     *   "status": 1,
-     *   "uid": 4,
-     *   "uuid": "01926e15-1adc-71b5-98be-3f585ded5410"
+     *   "code": 202,
+     *   "message": "success",
+     *   "data": {
+     *     "email": "nix@foo.org",
+     *     "identifier": "any-string",
+     *     "pid": 1053,
+     *     "appPid": 1053,
+     *     "proposal": "{json:payload}",
+     *     "record": "",
+     *     "requestLog": "{json:payload}",
+     *     "status": 1,
+     *     "uid": 4,
+     *     "uuid": "01926e15-1adc-71b5-98be-3f585ded5410"
+     *   }
      * }
-     * }
+     * ```
      *
      * @Api\Route("PUT /proposal/{id}")
      * @Api\Access("public")
