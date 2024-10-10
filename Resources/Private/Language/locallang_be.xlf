@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-06-02T11:48:25Z"
+		  product-name="cpsit_proposal">
+		<header/>
+		<body>
+			<!-- App plugin -->
+			<trans-unit id="app.plugin.title">
+				<source>Proposal App</source>
+			</trans-unit>
+			<trans-unit id="app.plugin.description">
+				<source>API to post record proposals</source>
+			</trans-unit>
+
+			<!-- App flexform -->
+			<trans-unit id="app.sheetTitle">
+				<source>Proposal App</source>
+			</trans-unit>
+			<trans-unit id="app.settings.identifier">
+				<source>Proposal identifier string</source>
+			</trans-unit>
+			<trans-unit id="app.settings.identifier.description">
+				<source>Identifier string for proposal records</source>
+			</trans-unit>
+			<trans-unit id="app.settings.storagePid">
+				<source>Page to store proposal records</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

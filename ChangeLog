@@ -1,4 +1,15 @@
+2024-10-10         [RELEASE] Release of cpsit_proposal 0.2.0 (Vladimir Falcón Piva)
+2024-10-10 d8adf25 Features: (Vladimir Falcón Piva)
+2024-10-10 b2fc3a9 Feature proposal App plugin (Vladimir Falcón Piva)
+2024-10-09 4e43f7b Feature proposal put withdraw endpoint. Feature proposal withdraw event and event listener (Vladimir Falcón Piva)
+2024-10-09 692f509 Fixed PHP cs fixer errors (Vladimir Falcón Piva)
+2024-10-09 dd00abf Features: (Vladimir Falcón Piva)
+2024-10-09 e31ea5f Feature proposal post event and event listener (Vladimir Falcón Piva)
+2024-10-08 58abfca Feature proposal post and get endpoints (Vladimir Falcón Piva)
+2024-10-08 f3f8965 Remove find proposal from post method (Vladimir Falcón Piva)
+2024-10-08 1192d2f Create post end point (Vladimir Falcón Piva)
+2024-10-08 5f69f5a Fixed TCA proposal record field size (Vladimir Falcón Piva)
+2024-10-08 7941ad1 Update model fields and TCA configurations (Vladimir Falcón Piva)
+
 2024-10-08         [RELEASE] Release of cpsit_proposal 0.1.0 (Vladimir Falcón Piva)
 2024-10-08 6bfb95f First release (Vladimir Falcón Piva)
-
-

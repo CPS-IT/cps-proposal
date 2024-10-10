@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /*
@@ -16,14 +17,17 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 class Proposal extends AbstractEntity
 {
     public const TABLE_NAME = 'tx_cpsitproposal_domain_model_proposal';
+    public const FIELD_UUID = 'uuid';
 
     protected string $uuid = '';
     protected string $email = '';
     protected string $proposal = '';
-    protected int $status = 0;
     protected string $record = '';
-    protected string $type = '';
-    protected string $request_log = '';
+    protected string $identifier = '';
+    protected string $requestLog = '';
+    protected int $status = 0;
+    protected int $appPid = 0;
+    protected bool $hidden = false;
 
     public function getUuid(): string
     {
@@ -55,6 +59,16 @@ class Proposal extends AbstractEntity
         $this->proposal = $proposal;
     }
 
+    public function getAppPid(): int
+    {
+        return $this->appPid;
+    }
+
+    public function setAppPid(int $appPid): void
+    {
+        $this->appPid = $appPid;
+    }
+
     public function getStatus(): int
     {
         return $this->status;
@@ -75,25 +89,44 @@ class Proposal extends AbstractEntity
         $this->record = $record;
     }
 
-    public function getType(): string
+    public function getIdentifier(): string
     {
-        return $this->type;
+        return $this->identifier;
     }
 
-    public function setType(string $type): void
+    public function setIdentifier(string $identifier): void
     {
-        $this->type = $type;
+        $this->identifier = $identifier;
     }
 
-    public function getRequestLog(): string
+    /**
+     * Internal request log to this proposal
+     *
+     * @return string
+     * @internal
+     */
+    public function _getRequestLog(): string
     {
-        return $this->request_log;
+        return $this->requestLog;
     }
 
-    public function setRequestLog(string $request_log): void
+    public function setRequestLog(string $requestLog): void
     {
-        $this->request_log = $request_log;
+        $this->requestLog = $requestLog;
     }
 
+    public function getHidden(): bool
+    {
+        return $this->hidden;
+    }
 
+    public function isHidden(): bool
+    {
+        return $this->hidden;
+    }
+
+    public function setHidden(bool $hidden): void
+    {
+        $this->hidden = $hidden;
+    }
 }

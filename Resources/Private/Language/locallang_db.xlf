@@ -17,17 +17,41 @@
 			<trans-unit id="tx_cpsitproposal_domain_model_proposal.status">
 				<source>Status</source>
 			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.status.0">
+				<source>Undefined</source>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.status.1">
+				<source>New</source>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.status.2">
+				<source>Edited</source>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.status.3">
+				<source>Approved</source>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.status.4">
+				<source>Rejected</source>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.status.5">
+				<source>Withdraw</source>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.status.6">
+				<source>Error</source>
+			</trans-unit>
 			<trans-unit id="tx_cpsitproposal_domain_model_proposal.email">
 				<source>Email</source>
 			</trans-unit>
 			<trans-unit id="tx_cpsitproposal_domain_model_proposal.record">
 				<source>Record</source>
 			</trans-unit>
-			<trans-unit id="tx_cpsitproposal_domain_model_proposal.type">
-				<source>Type</source>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.identifier">
+				<source>Identifier</source>
 			</trans-unit>
 			<trans-unit id="tx_cpsitproposal_domain_model_proposal.request_log">
 				<source>Request Log</source>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.app_pid">
+				<source>Page containing the proposal App plugin</source>
 			</trans-unit>
 		</body>
 	</file>

@@ -1,0 +1,38 @@
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <sheetTitle>
+                    LLL:EXT:cpsit_proposal/Resources/Private/Language/locallang_be.xlf:app.sheetTitle
+                </sheetTitle>
+                <type>array</type>
+                <el>
+                    <!-- identifier -->
+                    <settings.identifier>
+                        <label>LLL:EXT:cpsit_proposal/Resources/Private/Language/locallang_be.xlf:app.settings.identifier</label>
+                        <description>LLL:EXT:cpsit_proposal/Resources/Private/Language/locallang_be.xlf:app.settings.identifier.description</description>
+                        <config>
+                            <type>input</type>
+                            <required>1</required>
+                            <eval>trim,required,nospace</eval>
+                        </config>
+                    </settings.identifier>
+
+                    <!-- storage -->
+                    <settings.storagePid>
+                        <TCEforms>
+                            <label>LLL:EXT:cpsit_proposal/Resources/Private/Language/locallang_be.xlf:app.settings.storagePid</label>
+                            <config>
+                                <type>group</type>
+                                <allowed>pages</allowed>
+                                <size>1</size>
+                                <maxitems>1</maxitems>
+                                <minitems>1</minitems>
+                            </config>
+                        </TCEforms>
+                    </settings.storagePid>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

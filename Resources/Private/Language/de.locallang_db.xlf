@@ -57,13 +57,17 @@
 				<source>Record</source>
 				<target>Datensatz</target>
 			</trans-unit>
-			<trans-unit id="tx_cpsitproposal_domain_model_proposal.type">
-				<source>Type</source>
-				<target>Typ</target>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.identifier">
+				<source>Identifier</source>
+				<target>Identifikator</target>
 			</trans-unit>
 			<trans-unit id="tx_cpsitproposal_domain_model_proposal.request_log">
 				<source>Request Log</source>
 				<target>Request Log</target>
+			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.app_pid">
+				<source>Page containing the proposal App plugin</source>
+				<target>Seite, die das Antrag-App-Plugin enthält</target>
 			</trans-unit>
 		</body>
 	</file>
