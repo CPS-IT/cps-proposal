@@ -99,7 +99,13 @@ class Proposal extends AbstractEntity
         $this->identifier = $identifier;
     }
 
-    public function getRequestLog(): string
+    /**
+     * Internal request log to this proposal
+     *
+     * @return string
+     * @internal
+     */
+    public function _getRequestLog(): string
     {
         return $this->requestLog;
     }

@@ -12,8 +12,7 @@ declare(strict_types=1);
 
 namespace Cpsit\CpsitProposal\Api\Proposal;
 
-use Cpsit\CpsitProposal\Domain\Model\Proposal;
-use Nng\Nnhelpers\Utilities\Db;
+use Cpsit\CpsitProposal\Domain\Repository\ProposalRepository;
 use Nng\Nnrestapi\Annotations as Api;
 use Nng\Nnrestapi\Api\AbstractApi;
 use TYPO3\CMS\Core\Http\Response;
@@ -28,8 +27,9 @@ class Get extends AbstractApi
     public const UUID_ARGUMENT = 'id';
 
     public function __construct(
-        protected readonly Db $db
-    ) {}
+        private readonly ProposalRepository $proposalRepository
+    ) {
+    }
 
     /**
      * Call via GET-request with an uuid:
@@ -66,9 +66,7 @@ class Get extends AbstractApi
      */
     public function getIndexAction(): Response
     {
-        $uuid = $this->request->getArguments()[static::UUID_ARGUMENT] ?? null;
-
-        if (!$uuid) {
+        if (!$this->isRequestValid()) {
             // Return an `invalid parameters` (422) Response
             return $this->response->invalid(
                 'Invalid parameters for proposal GET.',
@@ -76,12 +74,9 @@ class Get extends AbstractApi
             );
         }
 
-        $proposal = $this->db->findOneByValues(
-            Proposal::TABLE_NAME,
-            [
-                Proposal::FIELD_UUID => $uuid,
-            ]
-        );
+        $uuid = $this->request->getArguments()[static::UUID_ARGUMENT];
+
+        $proposal = $this->proposalRepository->findOneByUuid($uuid);
 
         if (empty($proposal)) {
             // Return a `not found` (404) Response
@@ -100,5 +95,16 @@ class Get extends AbstractApi
                 'data' => $proposal,
             ])
             ->render();
+    }
+
+    protected function isRequestValid(): bool
+    {
+        $uuid = $this->request->getArguments()[static::UUID_ARGUMENT] ?? null;
+
+        if (!$uuid) {
+            return false;
+        }
+
+        return true;
     }
 }

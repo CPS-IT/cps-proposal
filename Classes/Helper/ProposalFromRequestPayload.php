@@ -21,7 +21,8 @@ final class ProposalFromRequestPayload
 {
     public function __construct(
         protected RequestDataProvider $requestDataProvider
-    ) {}
+    ) {
+    }
 
     public function create(Request $request): Proposal
     {
@@ -33,6 +34,7 @@ final class ProposalFromRequestPayload
         $proposal->setStatus(ProposalStatus::New->value);
         $proposal->setIdentifier($request->getBody()['identifier'] ?? 0);
         $proposal->setPid((int)$request->getBody()['pid'] ?? 0);
+        $proposal->setAppPid((int)$request->getBody()['appPid'] ?? 0);
         $proposal->setRequestLog(
             json_encode($this->requestDataProvider->get($request))
         );
@@ -47,11 +49,12 @@ final class ProposalFromRequestPayload
         $proposal->setStatus(ProposalStatus::Edited->value);
         $proposal->setIdentifier($request->getBody()['identifier'] ?? 0);
         $proposal->setPid((int)$request->getBody()['pid'] ?? 0);
+        $proposal->setAppPid((int)$request->getBody()['appPid'] ?? 0);
 
         // Prepend request log
         $requestLog = $this->updateProposalRequestLog(
             $request,
-            (string)$proposal->getRequestLog()
+            (string)$proposal->_getRequestLog()
         );
         $proposal->setRequestLog($requestLog);
     }
@@ -63,7 +66,7 @@ final class ProposalFromRequestPayload
         // Prepend request log
         $requestLog = $this->updateProposalRequestLog(
             $request,
-            (string)$proposal->getRequestLog()
+            (string)$proposal->_getRequestLog()
         );
         $proposal->setRequestLog($requestLog);
     }
@@ -72,9 +75,11 @@ final class ProposalFromRequestPayload
     {
         $log = json_decode($log, true);
         if (!is_array($log)) {
-            return json_encode($this->requestDataProvider->get($request));
+            $log = [
+                0 => $this->requestDataProvider->get($request)
+            ];
+            return json_encode($log);
         }
-
         return json_encode([$this->requestDataProvider->get($request), ...$log]);
     }
 }

@@ -50,6 +50,9 @@
 			<trans-unit id="tx_cpsitproposal_domain_model_proposal.request_log">
 				<source>Request Log</source>
 			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.app_pid">
+				<source>Page containing the proposal App plugin</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
