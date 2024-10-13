@@ -6,3 +6,9 @@ services:
   Cpsit\CpsitProposal\:
     resource: '../Classes/*'
     exclude: '../Classes/Domain/Model/*'
+
+  Cpsit\CpsitProposal\Service\NotificationService:
+    public: true
+
+  Cpsit\CpsitProposal\Service\PageLinkService:
+    public: true
