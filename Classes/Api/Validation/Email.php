@@ -53,7 +53,7 @@ class Email extends AbstractApi
      *   "email": "nix@foo.org",
      *   "identifier": "any-string",
      *   "pid": 1053,
-     *   "appPid": 1053,
+     *   "appPid": 1054,
      *   "validationHash": "dfde719e-9f19-40b5-af2e-6f96d4034cda"
      * }
      * ```

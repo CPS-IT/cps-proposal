@@ -47,7 +47,7 @@ class Get extends AbstractApi
      *     "email": "nix@foo.org",
      *     "identifier": "any-string",
      *     "pid": 1053,
-     *     "appPid": 1053,
+     *     "appPid": 1054,
      *     "proposal": "{json:payload}",
      *     "record": "",
      *     "requestLog": "{json:payload}",
