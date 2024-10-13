@@ -45,7 +45,7 @@
 				<source>Record</source>
 			</trans-unit>
 			<trans-unit id="tx_cpsitproposal_domain_model_proposal.identifier">
-				<source>Identifier</source>
+				<source>Type Identifier</source>
 			</trans-unit>
 			<trans-unit id="tx_cpsitproposal_domain_model_proposal.request_log">
 				<source>Request Log</source>

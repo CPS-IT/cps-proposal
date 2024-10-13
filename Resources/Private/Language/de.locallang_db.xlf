@@ -58,8 +58,8 @@
 				<target>Datensatz</target>
 			</trans-unit>
 			<trans-unit id="tx_cpsitproposal_domain_model_proposal.identifier">
-				<source>Identifier</source>
-				<target>Identifikator</target>
+				<source>Type Identifier</source>
+				<target>Type Identifikator</target>
 			</trans-unit>
 			<trans-unit id="tx_cpsitproposal_domain_model_proposal.request_log">
 				<source>Request Log</source>
