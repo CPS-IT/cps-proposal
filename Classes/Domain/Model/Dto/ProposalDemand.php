@@ -17,7 +17,7 @@ class ProposalDemand
     protected int $id = 0;
     protected array $idList = [];
     protected array $pageIds = [];
-
+    protected array $status = [];
     protected int $limit = 0;
 
     protected string $order = 'crdate desc';
@@ -50,6 +50,16 @@ class ProposalDemand
     public function setPageIds(array $pageIds): void
     {
         $this->pageIds = $pageIds;
+    }
+
+    public function getStatus(): array
+    {
+        return $this->status;
+    }
+
+    public function setStatus(array $status): void
+    {
+        $this->status = $status;
     }
 
     public function getLimit(): int

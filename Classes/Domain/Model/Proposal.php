@@ -12,12 +12,14 @@ declare(strict_types=1);
 
 namespace Cpsit\CpsitProposal\Domain\Model;
 
+use Cpsit\CpsitProposal\Type\ProposalStatus;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 class Proposal extends AbstractEntity
 {
     public const TABLE_NAME = 'tx_cpsitproposal_domain_model_proposal';
     public const FIELD_UUID = 'uuid';
+    public const FIELD_STATUS = 'status';
 
     protected string $uuid = '';
     protected string $email = '';
@@ -72,6 +74,12 @@ class Proposal extends AbstractEntity
     public function getStatus(): int
     {
         return $this->status;
+    }
+
+    public function getStatusIconIdentifier(): string
+    {
+        $status = ProposalStatus::tryFrom($this->status) ?? ProposalStatus::Undefined;
+        return ProposalStatus::getIconIdentifier($status);
     }
 
     public function setStatus(int $status): void
