@@ -17,5 +17,6 @@ plugin.tx_cpsitproposal_app {
   }
 
   settings {
+    formkitId = knk-caretaker-proposal
   }
 }
