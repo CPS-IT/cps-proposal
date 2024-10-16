@@ -4,10 +4,6 @@ services:
     autoconfigure: true
     public: false
 
-  _instanceof:
-    Cpsit\Formkit\DataProvider\SelectOptionsDataProviderInterface:
-      tags: [ 'formkit.selectOptionsDataProvider' ]
-
   Cpsit\CpsitProposal\:
     resource: '../Classes/*'
     exclude: '../Classes/Domain/Model/*'
