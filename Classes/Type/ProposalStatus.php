@@ -26,4 +26,17 @@ enum ProposalStatus: int
     {
         return array_column(self::cases(), 'name', 'value');
     }
+
+    public static function getIconIdentifier(self $value): string
+    {
+        return match ($value) {
+            self::Undefined => 'icon-proposal-status-undefined',
+            self::New => 'icon-proposal-status-new',
+            self::Edited => 'icon-proposal-status-edited',
+            self::Approved => 'icon-proposal-status-approved',
+            self::Rejected => 'icon-proposal-status-rejected',
+            self::Withdraw => 'icon-proposal-status-withdraw',
+            self::Error => 'icon-proposal-status-error'
+        };
+    }
 }

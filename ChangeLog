@@ -1,3 +1,12 @@
+2024-10-20         [RELEASE] Release of cpsit_proposal 0.4.0 (Vladimir Falcón Piva)
+2024-10-20 baaaebf Feature proposal model get record from DB in BE context (Vladimir Falcón Piva)
+2024-10-17 2f63789 Feature Proposal model add tstam and crdate properties (Vladimir Falcón Piva)
+2024-10-16 a719ec1 mistakenly added classes removed (Dirk Wenzel)
+2024-10-16 92626ff [WIP] stubs for formkit dataproviders added (Dirk Wenzel)
+2024-10-15 348764f form id added to configuration (Dirk Wenzel)
+2024-10-14 4b12cd0 Feature proposal status icons (Vladimir Falcón Piva)
+2024-10-14 7350c07 Add formkit it data attribute (Vladimir Falcón Piva)
+
 2024-10-13         [RELEASE] Release of cpsit_proposal 0.3.1 (Vladimir Falcón Piva)
 2024-10-13 ab96276 Refactor label for proposal identifier (Vladimir Falcón Piva)
 

@@ -80,6 +80,13 @@ class ProposalRepository extends Repository
             $constraints[] = $query->in('uid', $demand->getIdList());
         }
 
+        if (!empty($demand->getStatus())) {
+            $constraints[] = $query->in(
+                Proposal::FIELD_STATUS,
+                $demand->getStatus()
+            );
+        }
+
         if (!empty($demand->getId())) {
             $constraints[] = $query->equals('uid', $demand->getId());
         }

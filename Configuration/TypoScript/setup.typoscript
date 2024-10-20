@@ -17,5 +17,12 @@ plugin.tx_cpsitproposal_app {
   }
 
   settings {
+    formkitId = knk-caretaker-proposal
+  }
+}
+
+plugin.tx_nnrestapi.settings.globalDistillers {
+  Cpsit\CpsitProposal\Domain\Model\Proposal {
+    exclude = record, recordFromDbInBackend
   }
 }

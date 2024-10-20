@@ -12,12 +12,16 @@ declare(strict_types=1);
 
 namespace Cpsit\CpsitProposal\Domain\Model;
 
+use Cpsit\CpsitProposal\Type\ProposalStatus;
+use DateTime;
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 class Proposal extends AbstractEntity
 {
     public const TABLE_NAME = 'tx_cpsitproposal_domain_model_proposal';
     public const FIELD_UUID = 'uuid';
+    public const FIELD_STATUS = 'status';
 
     protected string $uuid = '';
     protected string $email = '';
@@ -28,6 +32,9 @@ class Proposal extends AbstractEntity
     protected int $status = 0;
     protected int $appPid = 0;
     protected bool $hidden = false;
+
+    protected ?DateTime $tstamp = null;
+    protected ?DateTime $crdate = null;
 
     public function getUuid(): string
     {
@@ -74,6 +81,12 @@ class Proposal extends AbstractEntity
         return $this->status;
     }
 
+    public function getStatusIconIdentifier(): string
+    {
+        $status = ProposalStatus::tryFrom($this->status) ?? ProposalStatus::Undefined;
+        return ProposalStatus::getIconIdentifier($status);
+    }
+
     public function setStatus(int $status): void
     {
         $this->status = $status;
@@ -82,6 +95,16 @@ class Proposal extends AbstractEntity
     public function getRecord(): string
     {
         return $this->record;
+    }
+
+    public function getRecordFromDbInBackend(): ?array
+    {
+        if (empty($this->getRecord())) {
+            return null;
+        }
+
+        [$table, $uid] = BackendUtility::splitTable_Uid($this->getRecord());
+        return BackendUtility::getRecord($table, $uid);
     }
 
     public function setRecord(string $record): void
@@ -128,5 +151,25 @@ class Proposal extends AbstractEntity
     public function setHidden(bool $hidden): void
     {
         $this->hidden = $hidden;
+    }
+
+    public function getTstamp(): ?DateTime
+    {
+        return $this->tstamp;
+    }
+
+    public function setTstamp(?DateTime $tstamp): void
+    {
+        $this->tstamp = $tstamp;
+    }
+
+    public function getCrdate(): ?DateTime
+    {
+        return $this->crdate;
+    }
+
+    public function setCrdate(?DateTime $crdate): void
+    {
+        $this->crdate = $crdate;
     }
 }
