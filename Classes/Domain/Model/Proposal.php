@@ -14,6 +14,7 @@ namespace Cpsit\CpsitProposal\Domain\Model;
 
 use Cpsit\CpsitProposal\Type\ProposalStatus;
 use DateTime;
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 class Proposal extends AbstractEntity
@@ -94,6 +95,16 @@ class Proposal extends AbstractEntity
     public function getRecord(): string
     {
         return $this->record;
+    }
+
+    public function getRecordFromDbInBackend(): ?array
+    {
+        if (empty($this->getRecord())) {
+            return null;
+        }
+
+        [$table, $uid] = BackendUtility::splitTable_Uid($this->getRecord());
+        return BackendUtility::getRecord($table, $uid);
     }
 
     public function setRecord(string $record): void
