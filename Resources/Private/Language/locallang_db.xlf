@@ -38,6 +38,9 @@
 			<trans-unit id="tx_cpsitproposal_domain_model_proposal.status.6">
 				<source>Error</source>
 			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.status.7">
+				<source>Published</source>
+			</trans-unit>
 			<trans-unit id="tx_cpsitproposal_domain_model_proposal.email">
 				<source>Email</source>
 			</trans-unit>

@@ -49,6 +49,10 @@
 				<source>Error</source>
 				<target>Error</target>
 			</trans-unit>
+			<trans-unit id="tx_cpsitproposal_domain_model_proposal.status.7">
+				<source>Published</source>
+				<target>Veröffentlicht</target>
+			</trans-unit>
 			<trans-unit id="tx_cpsitproposal_domain_model_proposal.email">
 				<source>Email</source>
 				<target>E-Mail</target>
