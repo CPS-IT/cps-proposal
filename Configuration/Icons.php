@@ -45,4 +45,8 @@ return [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:cpsit_proposal/Resources/Public/Icons/icon-proposal-status-withdraw.svg',
     ],
+    'icon-proposal-status-published' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:cpsit_proposal/Resources/Public/Icons/icon-proposal-status-published.svg',
+    ],
 ];

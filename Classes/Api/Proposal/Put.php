@@ -85,7 +85,7 @@ class Put extends AbstractApi
      *     "proposal": "{json:payload}",
      *     "record": "",
      *     "requestLog": "{json:payload}",
-     *     "status": 1,
+     *     "status": 2,
      *     "uid": 4,
      *     "uuid": "01926e15-1adc-71b5-98be-3f585ded5410"
      *   }

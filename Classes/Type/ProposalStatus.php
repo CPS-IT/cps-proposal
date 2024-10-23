@@ -21,6 +21,7 @@ enum ProposalStatus: int
     case Rejected = 4;
     case Withdraw = 5;
     case Error = 6;
+    case Published = 7;
 
     public static function status(): array
     {
@@ -36,7 +37,8 @@ enum ProposalStatus: int
             self::Approved => 'icon-proposal-status-approved',
             self::Rejected => 'icon-proposal-status-rejected',
             self::Withdraw => 'icon-proposal-status-withdraw',
-            self::Error => 'icon-proposal-status-error'
+            self::Error => 'icon-proposal-status-error',
+            self::Published => 'icon-proposal-status-published',
         };
     }
 }

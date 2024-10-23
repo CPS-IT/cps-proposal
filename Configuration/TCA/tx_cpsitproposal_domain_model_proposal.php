@@ -202,6 +202,10 @@ return [
                         $ll . 'tx_cpsitproposal_domain_model_proposal.status.6',
                         6,
                     ],
+                    [
+                        $ll . 'tx_cpsitproposal_domain_model_proposal.status.7',
+                        7,
+                    ],
                 ],
             ],
         ],
