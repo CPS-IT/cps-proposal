@@ -29,7 +29,7 @@ final class ProposalFromRequestPayload
 
         $proposal->setUuid(Uuid::v7()->toString());
         $proposal->setEmail($request->getBody()['email']);
-        $proposal->setProposal($request->getRawBody());
+        $proposal->setProposal($this->proposalDataFromRequest($request));
         $proposal->setStatus(ProposalStatus::New->value);
         $proposal->setIdentifier($request->getBody()['identifier'] ?? 0);
         $proposal->setPid((int)$request->getBody()['pid'] ?? 0);
@@ -44,7 +44,7 @@ final class ProposalFromRequestPayload
     public function update(Proposal $proposal, Request $request): void
     {
         $proposal->setEmail($request->getBody()['email']);
-        $proposal->setProposal($request->getRawBody());
+        $proposal->setProposal($this->proposalDataFromRequest($request));
         $proposal->setStatus(ProposalStatus::Edited->value);
         $proposal->setIdentifier($request->getBody()['identifier'] ?? 0);
         $proposal->setPid((int)$request->getBody()['pid'] ?? 0);
@@ -80,5 +80,14 @@ final class ProposalFromRequestPayload
             return json_encode($log);
         }
         return json_encode([$this->requestDataProvider->get($request), ...$log]);
+    }
+
+    protected function proposalDataFromRequest(Request $request): string
+    {
+        $proposalData = $request->getRawBody();
+        if (is_array($proposalData)) {
+            $proposalData = json_encode($proposalData);
+        }
+        return $proposalData;
     }
 }
