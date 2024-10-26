@@ -14,6 +14,7 @@ namespace Cpsit\CpsitProposal\Domain\Model\Dto;
 
 class ProposalDemand
 {
+    protected string $identifier = '';
     protected int $id = 0;
     protected array $idList = [];
     protected array $pageIds = [];
@@ -21,6 +22,16 @@ class ProposalDemand
     protected int $limit = 0;
 
     protected string $order = 'crdate desc';
+
+    public function getIdentifier(): string
+    {
+        return $this->identifier;
+    }
+
+    public function setIdentifier(string $identifier): void
+    {
+        $this->identifier = $identifier;
+    }
 
     public function getId(): int
     {
