@@ -77,7 +77,7 @@ class ProposalRepository extends Repository
         }
 
         if (!empty($demand->getIdList())) {
-            $constraints[] = $query->in('uid', $demand->getIdList());
+            $constraints[] = $query->in(Proposal::FIELD_UID, $demand->getIdList());
         }
 
         if (!empty($demand->getStatus())) {
@@ -88,7 +88,11 @@ class ProposalRepository extends Repository
         }
 
         if (!empty($demand->getId())) {
-            $constraints[] = $query->equals('uid', $demand->getId());
+            $constraints[] = $query->equals(Proposal::FIELD_UID, $demand->getId());
+        }
+
+        if (!empty($demand->getIdentifier())) {
+            $constraints[] = $query->equals(Proposal::FIELD_IDENTIFIER, $demand->getIdentifier());
         }
 
         if (!empty($constraints)) {

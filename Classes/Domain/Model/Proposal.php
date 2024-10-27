@@ -20,8 +20,10 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 class Proposal extends AbstractEntity
 {
     public const TABLE_NAME = 'tx_cpsitproposal_domain_model_proposal';
+    public const FIELD_UID = 'uid';
     public const FIELD_UUID = 'uuid';
     public const FIELD_STATUS = 'status';
+    public const FIELD_IDENTIFIER = 'identifier';
 
     protected string $uuid = '';
     protected string $email = '';
