@@ -24,6 +24,10 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 
 class ProposalRepository extends Repository
 {
+    protected $defaultOrderings = [
+        Proposal::FIELD_TSTAMP => QueryInterface::ORDER_DESCENDING,
+        Proposal::FIELD_CRDATE => QueryInterface::ORDER_DESCENDING,
+    ];
     public function initializeObject(): void
     {
         /** @var QuerySettingsInterface $querySettings */
