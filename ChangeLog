@@ -1,3 +1,6 @@
+2024-10-29         [RELEASE] Release of cpsit_proposal 0.6.1 (Vladimir Falcón Piva)
+2024-10-28 9c8ed0a Proposal repository default sort by crdate and tstam descending (Vladimir Falcón Piva)
+
 2024-10-26         [RELEASE] Release of cpsit_proposal 0.6.0 (Vladimir Falcón Piva)
 2024-10-26 a3bf024 Feature extend proposal repository, find demanded by identifier (Vladimir Falcón Piva)
 2024-10-25 b1587a2 Get proposal data from request. (Vladimir Falcón Piva)
