@@ -23,6 +23,8 @@ class Proposal extends AbstractEntity
     public const FIELD_UID = 'uid';
     public const FIELD_UUID = 'uuid';
     public const FIELD_STATUS = 'status';
+    public const FIELD_CRDATE = 'crdate';
+    public const FIELD_TSTAMP = 'tstamp';
     public const FIELD_IDENTIFIER = 'identifier';
 
     protected string $uuid = '';
