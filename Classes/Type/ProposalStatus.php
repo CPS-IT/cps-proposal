@@ -28,6 +28,15 @@ enum ProposalStatus: int
         return array_column(self::cases(), 'name', 'value');
     }
 
+    public static function fromName(string $name): ?self
+    {
+        $result = array_search($name, self::status(), true);
+        if (!$result) {
+            return null;
+        }
+        return self::tryFrom($result);
+    }
+
     public static function getIconIdentifier(self $value): string
     {
         return match ($value) {
