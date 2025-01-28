@@ -28,6 +28,7 @@ class ProposalRepository extends Repository
         Proposal::FIELD_TSTAMP => QueryInterface::ORDER_DESCENDING,
         Proposal::FIELD_CRDATE => QueryInterface::ORDER_DESCENDING,
     ];
+
     public function initializeObject(): void
     {
         /** @var QuerySettingsInterface $querySettings */
@@ -128,6 +129,24 @@ class ProposalRepository extends Repository
             }
         }
         return $orderings;
+    }
+
+    public function findProposalsByTimeAndStatus(int $tstamp, int $status): QueryResultInterface
+    {
+        $query = $this->createQuery();
+        $query->getQuerySettings()
+            ->setRespectStoragePage(false)
+            ->setRespectSysLanguage(false)
+            ->setIgnoreEnableFields(true);
+
+        $constraints = [
+            $query->lessThan('tstamp', $tstamp),
+            $query->equals('status', $status),
+            $query->equals('deleted', 0),
+        ];
+
+        $query->matching($query->logicalAnd($constraints));
+        return $query->execute();
     }
 
     protected function buildPropertyContainsConstraint(
