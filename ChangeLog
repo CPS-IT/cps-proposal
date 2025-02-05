@@ -1,3 +1,6 @@
+2025-02-05         [RELEASE] Release of cpsit_proposal 0.7.1 (Vladimir Falcón Piva)
+2025-02-05 51ef6d1 Enabled editlock field in proposal BE (Vladimir Falcón Piva)
+
 2025-01-28         [RELEASE] Release of cpsit_proposal 0.7.0 (Vladimir Falcón Piva)
 2025-01-27 ef8325d Feature command delete proposals and related caretaker by status and tstamp (Vladimir Falcón Piva)
 
