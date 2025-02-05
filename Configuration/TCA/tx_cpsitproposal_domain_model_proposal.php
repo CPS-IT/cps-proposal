@@ -128,6 +128,15 @@ return [
                 ],
             ],
         ],
+        'editlock' => [
+            'displayCond' => 'HIDE_FOR_NON_ADMINS',
+            'l10n_mode' => 'exclude',
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:editlock',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'checkboxToggle',
+            ],
+        ],
         'uuid' => [
             'exclude' => false,
             'label' => $ll . 'tx_cpsitproposal_domain_model_proposal.uuid',
