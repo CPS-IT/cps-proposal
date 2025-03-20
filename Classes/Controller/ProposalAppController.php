@@ -43,10 +43,10 @@ class ProposalAppController extends ActionController
 
         if ($typo3Version->getMajorVersion() < 12) {
             /** @var ContentObjectRenderer $contentObject */
-            $contentObject = $this->configurationManager->getContentObject();
+            $contentObject = $this->request->getAttribute('currentContentObject');
         }
 
-        $this->view->assign('contentObjectData', $this->configurationManager->getContentObject()->data);
+        $this->view->assign('contentObjectData', $this->request->getAttribute('currentContentObject')->data);
         if (is_object($GLOBALS['TSFE'])) {
             $this->view->assign('pageData', $GLOBALS['TSFE']->page);
         }
