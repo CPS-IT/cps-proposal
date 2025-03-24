@@ -13,7 +13,6 @@ declare(strict_types=1);
 namespace Cpsit\CpsitProposal\Domain\Model;
 
 use Cpsit\CpsitProposal\Type\ProposalStatus;
-use DateTime;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
@@ -37,8 +36,8 @@ class Proposal extends AbstractEntity
     protected int $appPid = 0;
     protected bool $hidden = false;
 
-    protected ?DateTime $tstamp = null;
-    protected ?DateTime $crdate = null;
+    protected ?\DateTime $tstamp = null;
+    protected ?\DateTime $crdate = null;
 
     public function getUuid(): string
     {
@@ -157,22 +156,22 @@ class Proposal extends AbstractEntity
         $this->hidden = $hidden;
     }
 
-    public function getTstamp(): ?DateTime
+    public function getTstamp(): ?\DateTime
     {
         return $this->tstamp;
     }
 
-    public function setTstamp(?DateTime $tstamp): void
+    public function setTstamp(?\DateTime $tstamp): void
     {
         $this->tstamp = $tstamp;
     }
 
-    public function getCrdate(): ?DateTime
+    public function getCrdate(): ?\DateTime
     {
         return $this->crdate;
     }
 
-    public function setCrdate(?DateTime $crdate): void
+    public function setCrdate(?\DateTime $crdate): void
     {
         $this->crdate = $crdate;
     }
