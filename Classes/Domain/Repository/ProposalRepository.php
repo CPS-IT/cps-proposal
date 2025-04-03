@@ -102,7 +102,7 @@ class ProposalRepository extends Repository
 
         if (!empty($constraints)) {
             $query->matching(
-                $query->logicalAnd($constraints)
+                $query->logicalAnd(...$constraints)
             );
         }
 
@@ -145,7 +145,7 @@ class ProposalRepository extends Repository
             $query->equals('deleted', 0),
         ];
 
-        $query->matching($query->logicalAnd($constraints));
+        $query->matching($query->logicalAnd(...$constraints));
         return $query->execute();
     }
 
