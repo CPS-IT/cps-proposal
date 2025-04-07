@@ -35,7 +35,7 @@ class ProposalAppController extends ActionController
         $frontendController = $this->request->getAttribute('frontend.controller');
 
         /** @var ContentObjectRenderer $contentObject */
-        $contentObject = $this->request->getAttributes('currentContentObject')['currentContentObject'] ?? null;
+        $contentObject = $this->request->getAttribute('currentContentObject');
 
         $this->view->assignMultiple(
             [
