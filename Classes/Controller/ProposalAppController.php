@@ -13,7 +13,6 @@ declare(strict_types=1);
 namespace Cpsit\CpsitProposal\Controller;
 
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
@@ -35,27 +34,14 @@ class ProposalAppController extends ActionController
         /** @var TypoScriptFrontendController $frontendController */
         $frontendController = $this->request->getAttribute('frontend.controller');
 
-        $typo3Version = new Typo3Version();
-        if ($typo3Version->getMajorVersion() > 11) {
-            /** @var ContentObjectRenderer $contentObject */
-            $contentObject = $this->request->getAttributes('currentContentObject');
-        }
-
-        if ($typo3Version->getMajorVersion() < 12) {
-            /** @var ContentObjectRenderer $contentObject */
-            $contentObject = $this->request->getAttribute('currentContentObject');
-        }
-
-        $this->view->assign('contentObjectData', $this->request->getAttribute('currentContentObject')->data);
-        if (is_object($GLOBALS['TSFE'])) {
-            $this->view->assign('pageData', $GLOBALS['TSFE']->page);
-        }
+        /** @var ContentObjectRenderer $contentObject */
+        $contentObject = $this->request->getAttributes('currentContentObject')['currentContentObject'] ?? null;
 
         $this->view->assignMultiple(
             [
                 'base' => $site->getConfiguration()['base'] ?? '',
-                'page' => $frontendController->page,
-                'contentObjectData' => $contentObject->data,
+                'page' => $frontendController->page ?? [],
+                'contentObjectData' => $contentObject->data ?? [],
             ]
         );
     }
