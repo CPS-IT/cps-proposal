@@ -8,6 +8,10 @@ services:
     resource: '../Classes/*'
     exclude: '../Classes/Domain/Model/*'
 
+  Cpsit\CpsitProposal\Api\:
+    resource: '../Classes/Api/*'
+    public: true
+
   Cpsit\CpsitProposal\Service\NotificationService:
     public: true
 

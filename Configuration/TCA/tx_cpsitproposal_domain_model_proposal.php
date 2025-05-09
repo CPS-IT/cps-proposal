@@ -1,6 +1,6 @@
 <?php
 
-defined('TYPO3_MODE') or die();
+defined('TYPO3') or die();
 
 $ll = 'LLL:EXT:cpsit_proposal/Resources/Private/Language/locallang_db.xlf:';
 
@@ -15,7 +15,6 @@ return [
         'hideAtCopy' => true,
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
         'origUid' => 't3_origuid',
         'editlock' => 'editlock',
         'languageField' => 'sys_language_uid',
@@ -38,7 +37,6 @@ return [
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'group',
-                'internal_type' => 'db',
                 'allowed' => 'tx_news_domain_model_news',
                 'size' => 1,
                 'maxitems' => 1,
@@ -64,12 +62,6 @@ return [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
                 'default' => 0,
-                'items' => [
-                    [
-                        0 => '',
-                        1 => '',
-                    ],
-                ],
             ],
         ],
         'cruser_id' => [
@@ -87,27 +79,21 @@ return [
         'crdate' => [
             'label' => 'crdate',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime',
+                'type' => 'datetime',
             ],
         ],
         'tstamp' => [
             'label' => 'tstamp',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime',
+                'type' => 'datetime',
             ],
         ],
         'starttime' => [
             'exclude' => true,
             'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:starttime_formlabel',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'type' => 'datetime',
                 'size' => 16,
-                'eval' => 'datetime,int',
                 'default' => 0,
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
@@ -118,10 +104,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:endtime_formlabel',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'type' => 'datetime',
                 'size' => 16,
-                'eval' => 'datetime,int',
                 'default' => 0,
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
@@ -184,36 +168,36 @@ return [
                 'readOnly' => true,
                 'items' => [
                     [
-                        $ll . 'tx_cpsitproposal_domain_model_proposal.status.0',
-                        0,
+                        'label' => $ll . 'tx_cpsitproposal_domain_model_proposal.status.0',
+                        'value' => 0,
                     ],
                     [
-                        $ll . 'tx_cpsitproposal_domain_model_proposal.status.1',
-                        1,
+                        'label' => $ll . 'tx_cpsitproposal_domain_model_proposal.status.1',
+                        'value' => 1,
                     ],
                     [
-                        $ll . 'tx_cpsitproposal_domain_model_proposal.status.2',
-                        2,
+                        'label' => $ll . 'tx_cpsitproposal_domain_model_proposal.status.2',
+                        'value' => 2,
                     ],
                     [
-                        $ll . 'tx_cpsitproposal_domain_model_proposal.status.3',
-                        3,
+                        'label' => $ll . 'tx_cpsitproposal_domain_model_proposal.status.3',
+                        'value' => 3,
                     ],
                     [
-                        $ll . 'tx_cpsitproposal_domain_model_proposal.status.4',
-                        4,
+                        'label' => $ll . 'tx_cpsitproposal_domain_model_proposal.status.4',
+                        'value' => 4,
                     ],
                     [
-                        $ll . 'tx_cpsitproposal_domain_model_proposal.status.5',
-                        5,
+                        'label' => $ll . 'tx_cpsitproposal_domain_model_proposal.status.5',
+                        'value' => 5,
                     ],
                     [
-                        $ll . 'tx_cpsitproposal_domain_model_proposal.status.6',
-                        6,
+                        'label' => $ll . 'tx_cpsitproposal_domain_model_proposal.status.6',
+                        'value' => 6,
                     ],
                     [
-                        $ll . 'tx_cpsitproposal_domain_model_proposal.status.7',
-                        7,
+                        'label' => $ll . 'tx_cpsitproposal_domain_model_proposal.status.7',
+                        'value' => 7,
                     ],
                 ],
             ],
