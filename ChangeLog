@@ -1,3 +1,10 @@
+2025-05-09         [RELEASE] Release of cpsit-proposal 1.0.0 (Vladimir Falcón Piva)
+2025-04-07 d511ff2 Fixed DI errors with api endpoints and TYPO3 upgrade (Vladimir Falcón Piva)
+2025-04-07 5652976 Fixed error with page and content object data collection (Vladimir Falcón Piva)
+2025-04-03 ec7fd1a Fixed wrong argument type error (Vladimir Falcón Piva)
+2025-03-24 ce29c65 Refactor with rector and php-cs. Functionality was not tested. (Vladimir Falcón Piva)
+2025-03-20 1826ac6 Refactor with rector. Functionality was not tested. (Vladimir Falcón Piva)
+
 2025-02-05         [RELEASE] Release of cpsit_proposal 0.7.1 (Vladimir Falcón Piva)
 2025-02-05 51ef6d1 Enabled editlock field in proposal BE (Vladimir Falcón Piva)
 
