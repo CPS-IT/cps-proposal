@@ -1,3 +1,6 @@
+2025-05-30         [RELEASE] Release of cpsit-proposal 1.0.1 (Vladimir Falcón Piva)
+2025-05-30 b4d3c27 Refactor language labels to use core language resources in various domain models (Vladimir Falcón Piva)
+
 2025-05-09         [RELEASE] Release of cpsit-proposal 1.0.0 (Vladimir Falcón Piva)
 2025-04-07 d511ff2 Fixed DI errors with api endpoints and TYPO3 upgrade (Vladimir Falcón Piva)
 2025-04-07 5652976 Fixed error with page and content object data collection (Vladimir Falcón Piva)
