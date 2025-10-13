@@ -42,14 +42,20 @@ class ProposalRepository extends Repository
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
-        $query->getQuerySettings()->setRespectSysLanguage(false);
-        $query->getQuerySettings()->setLanguageOverlayMode(true);
 
-        $result = $query->matching(
+        $languageAspect = $query->getQuerySettings()->getLanguageAspect();
+        $languageAspect = new \TYPO3\CMS\Core\Context\LanguageAspect(
+            $languageAspect->getId(),
+            $languageAspect->getContentId(),
+            \TYPO3\CMS\Core\Context\LanguageAspect::OVERLAYS_MIXED
+        );
+        $query->getQuerySettings()->setRespectSysLanguage(false);
+        $query->getQuerySettings()->setLanguageAspect($languageAspect);
+
+        $query->matching(
             $query->equals(Proposal::FIELD_UUID, $uuid)
-        )
-            ->setLimit(1)
-            ->execute();
+        );
+        $result = $query->execute();
 
         if ($result instanceof QueryResultInterface) {
             return $result->getFirst();

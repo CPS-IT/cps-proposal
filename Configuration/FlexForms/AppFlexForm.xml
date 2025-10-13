@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <T3DataStructure>
     <sheets>
         <sDEF>
@@ -14,22 +15,19 @@
                         <config>
                             <type>input</type>
                             <required>1</required>
-                            <eval>trim,required,nospace</eval>
+                            <eval>trim,nospace</eval>
                         </config>
                     </settings.identifier>
-
                     <!-- storage -->
                     <settings.storagePid>
-                        <TCEforms>
-                            <label>LLL:EXT:cpsit_proposal/Resources/Private/Language/locallang_be.xlf:app.settings.storagePid</label>
-                            <config>
-                                <type>group</type>
-                                <allowed>pages</allowed>
-                                <size>1</size>
-                                <maxitems>1</maxitems>
-                                <minitems>1</minitems>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:cpsit_proposal/Resources/Private/Language/locallang_be.xlf:app.settings.storagePid</label>
+                        <config>
+                            <type>group</type>
+                            <allowed>pages</allowed>
+                            <size>1</size>
+                            <maxitems>1</maxitems>
+                            <minitems>1</minitems>
+                        </config>
                     </settings.storagePid>
                 </el>
             </ROOT>
