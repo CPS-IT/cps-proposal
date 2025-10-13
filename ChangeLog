@@ -1,3 +1,9 @@
+2025-10-13         [RELEASE] Release of cpsit-proposal 2.0.0 (Vladimir Falcón Piva)
+2025-10-13 20ccfef [UPDATE] update nng/nnrestapi version constraint to >=2.0 (Vladimir Falcón Piva)
+2025-09-21 4391448 Refactor ProposalAppController and ProposalRepository for TYPO3 v13 compatibility; add migration for Cpsit CpsitProposal plugins to content elements (Vladimir Falcón Piva)
+2025-06-30 55c04b7 [WIP] allow nng/nnrestapi:^3.0 (Dirk Wenzel)
+2025-06-30 db53ec1 [WIP] allow TYPO3 v13 (Dirk Wenzel)
+
 2025-05-30         [RELEASE] Release of cpsit-proposal 1.0.1 (Vladimir Falcón Piva)
 2025-05-30 b4d3c27 Refactor language labels to use core language resources in various domain models (Vladimir Falcón Piva)
 
