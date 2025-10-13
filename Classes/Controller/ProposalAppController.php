@@ -16,7 +16,6 @@ use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
-use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 class ProposalAppController extends ActionController
 {
@@ -31,8 +30,8 @@ class ProposalAppController extends ActionController
         /** @var Site $site */
         $site = $this->request->getAttribute('site');
 
-        /** @var TypoScriptFrontendController $frontendController */
-        $frontendController = $this->request->getAttribute('frontend.controller');
+        /** @var \TYPO3\CMS\Frontend\Page\PageInformation $pageInformation */
+        $pageInformation = $this->request->getAttribute('frontend.page.information');
 
         /** @var ContentObjectRenderer $contentObject */
         $contentObject = $this->request->getAttribute('currentContentObject');
@@ -40,7 +39,7 @@ class ProposalAppController extends ActionController
         $this->view->assignMultiple(
             [
                 'base' => $site->getConfiguration()['base'] ?? '',
-                'page' => $frontendController->page ?? [],
+                'page' => $pageInformation->getPageRecord() ?? [],
                 'contentObjectData' => $contentObject->data ?? [],
             ]
         );

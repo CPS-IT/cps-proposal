@@ -9,7 +9,7 @@ return [
         'title' => $ll . 'tx_cpsitproposal_domain_model_proposal',
         'descriptionColumn' => 'notes',
         'label' => 'email',
-        'label_alt' => 'type, uuid',
+        'label_alt' => 'uuid',
         'label_alt_force' => true,
         'prependAtCopy' => '',
         'hideAtCopy' => true,
@@ -29,7 +29,7 @@ return [
             'endtime' => 'endtime',
         ],
         'iconfile' => 'EXT:cpsit_proposal/Resources/Public/Icons/icon-proposal-idea.svg',
-        'searchFields' => 'uid, uuid, proposal, status, email, type, request_log',
+        'searchFields' => 'uid, uuid, proposal, status, email, request_log',
     ],
     'columns' => [
         'l10n_parent' => [
