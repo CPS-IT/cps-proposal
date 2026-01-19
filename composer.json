@@ -1,14 +1,14 @@
 {
     "name": "cpsit/cpsit-proposal",
     "description": "Api to send and edit records proposal.",
-    "type": "typo3-cms-extension",
     "license": [
         "GPL-2.0-or-later"
     ],
+    "type": "typo3-cms-extension",
     "require": {
-        "typo3/cms-core": "^11.5 || ^12.4 || ^13.4",
-		"nng/nnrestapi": ">=2.0",
-		"symfony/uid": ">=5.1"
+        "nng/nnrestapi": ">=2.0",
+        "symfony/uid": ">=5.1",
+        "typo3/cms-core": "^11.5 || ^12.4 || ^13.4"
     },
     "autoload": {
         "psr-4": {
